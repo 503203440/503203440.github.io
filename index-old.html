@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>😁</title>
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- <link rel="icon" href="favicon.gif" type="image/gif"> -->
+
+    <!-- <bgsound src="https://m10.music.126.net/20190318231805/ee0a6213a39732275b3f63070a8b7c28/ymusic/065b/045f/0f0e/11afb529ed35d8a56e278da2ca972574.mp3" loop=-1> -->
+    <!-- <embed  autostart="true"  style="display: none" src="https://m10.music.126.net/20190318231805/ee0a6213a39732275b3f63070a8b7c28/ymusic/065b/045f/0f0e/11afb529ed35d8a56e278da2ca972574.mp3" loop="true"/> -->
+</head>
+<body>
+	<!--
+    <audio autoplay loop>
+	<source type="audio/m4a" src="https://m701.music.126.net/20190319163846/74bc246011f482dc8adfd29f6212d7e0/jdyyaac/050f/525c/000b/2e81e99b98e663703d6f7ad86b48cb18.m4a">
+    </audio>
+	-->
+	<audio id="BGM" autoplay loop>
+		<!--
+  		<source src="https://m701.music.126.net/20190319163846/74bc246011f482dc8adfd29f6212d7e0/jdyyaac/050f/525c/000b/2e81e99b98e663703d6f7ad86b48cb18.m4a">
+		-->
+		<source src="./sunburst.mp3">
+	</audio>
+	
+    <div style="margin: 50px auto;width: 200px;height: 200px;border-radius: 50%;background-image: url('./我佛慈悲.jpg');background-size: 100% 100%;"></div>
+</body>
+</html>
+<script>
+
+    var letter = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+
+
+    // while(confirm(random1)){
+    //     random1=Math.floor(Math.random()*16)
+    // }
+
+    function changeBG(){
+        
+        // 产生0-15的随机数
+        var random1=Math.floor(Math.random()*16);
+        var random2=Math.floor(Math.random()*16);
+        var random3=Math.floor(Math.random()*16);
+        var random4=Math.floor(Math.random()*16);
+        var random5=Math.floor(Math.random()*16);
+        var random6=Math.floor(Math.random()*16);
+        
+        //给body设置颜色
+        document.body.style.backgroundColor="#"+letter[random1]+letter[random2]+letter[random3]+letter[random4]+letter[random5]+letter[random6];
+
+        // alert("#"+letter[random1]+letter[random2]+letter[random3]+letter[random4]+letter[random5]+letter[random6]);
+    }
+
+    //页面加载
+    window.onload=function(){
+        // changeBG();
+        //定时执行换色程序
+        setInterval(() => {
+            changeBG()
+        }, 100);
+
+        // while(true){
+        //     setTimeout(changeBG(),2000);
+        //     break;
+        // }
+
+    }
+
+</script>
+<script type="text/javascript">
+	var hiddenProperty = 'hidden' in document ? 'hidden' :
+		'webkitHidden' in document ? 'webkitHidden' :
+		'mozHidden' in document ? 'mozHidden' :
+		null;
+	var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+	var onVisibilityChange = function() {
+		if(!document[hiddenProperty]) {
+			document.title = "ˇε ˇ黑凤梨 "
+		} else {
+			document.title = ":-( 不要离开我"
+		}
+	}
+	document.addEventListener(visibilityChangeEvent, onVisibilityChange);
+</script>

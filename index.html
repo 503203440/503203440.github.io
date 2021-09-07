@@ -1,86 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>😁</title>
-    
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <!-- <link rel="icon" href="favicon.gif" type="image/gif"> -->
+    <title></title>
+    <!-- <link rel="stylesheet" href="./index.css" /> -->
+    <style>
+        :root {
+            font-size: 5px;
+            color: #fff;
+        }
 
-    <!-- <bgsound src="https://m10.music.126.net/20190318231805/ee0a6213a39732275b3f63070a8b7c28/ymusic/065b/045f/0f0e/11afb529ed35d8a56e278da2ca972574.mp3" loop=-1> -->
-    <!-- <embed  autostart="true"  style="display: none" src="https://m10.music.126.net/20190318231805/ee0a6213a39732275b3f63070a8b7c28/ymusic/065b/045f/0f0e/11afb529ed35d8a56e278da2ca972574.mp3" loop="true"/> -->
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+
+        /* h1{
+    font-size: 6rem;
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    width: 6ch;
+    overflow: hidden;
+    animation: 2s typing steps(13,jump-none) forwards;
+} */
+
+        /* @keyframes typing {
+    from {
+        width: 1ch;
+    }
+    to {
+        width: 13ch;
+    }
+} */
+
+        h1 {
+            font-size: 6rem;
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            position: relative;
+        }
+
+        /* h1后面 */
+        h1::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 1px;
+            height: 6rem;
+            background-color: #fff;
+            border-radius: 2px;
+            right: -30px;
+        }
+
+        /* h1结束后的动画 */
+
+        h1.ended::after {
+            animation: 1.1s cursor steps(2, jump-none) infinite;
+        }
+
+        @keyframes cursor {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* h1内部span标签的动画效果 */
+        h1 span {
+            --delay: 10s;
+            display: inline-block;
+            overflow: hidden;
+            width: 0ch;
+            animation: 0.1s text-in ease-in-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes text-in {
+            from {
+                width: 0ch;
+            }
+
+            to {
+                width: 2ch;
+            }
+        }
+    </style>
 </head>
+
 <body>
-	<!--
-    <audio autoplay loop>
-	<source type="audio/m4a" src="https://m701.music.126.net/20190319163846/74bc246011f482dc8adfd29f6212d7e0/jdyyaac/050f/525c/000b/2e81e99b98e663703d6f7ad86b48cb18.m4a">
-    </audio>
-	-->
-	<audio id="BGM" autoplay loop>
-		<!--
-  		<source src="https://m701.music.126.net/20190319163846/74bc246011f482dc8adfd29f6212d7e0/jdyyaac/050f/525c/000b/2e81e99b98e663703d6f7ad86b48cb18.m4a">
-		-->
-		<source src="./sunburst.mp3">
-	</audio>
-	
-    <div style="margin: 50px auto;width: 200px;height: 200px;border-radius: 50%;background-image: url('./我佛慈悲.jpg');background-size: 100% 100%;"></div>
+    <!-- <h1>CodingStartup</h1> -->
+    <h1>晓看天色暮看云,行也思君,坐也思君;昼赏微云夜观星,醒亦念卿,寐亦念卿</h1>
 </body>
+
 </html>
+
+<!-- <script type="text/javascript" src="./index.js"></script> -->
+
 <script>
 
-    var letter = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
 
-
-    // while(confirm(random1)){
-    //     random1=Math.floor(Math.random()*16)
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('get', 'https://chp.shadiao.app/api.php')
+    // xhr.send()
+    // if (xhr.status == 200) {
+    //     let text = xhr.responseText
+    //     document.querySelector('h1').innerText = text;
     // }
 
-    function changeBG(){
-        
-        // 产生0-15的随机数
-        var random1=Math.floor(Math.random()*16);
-        var random2=Math.floor(Math.random()*16);
-        var random3=Math.floor(Math.random()*16);
-        var random4=Math.floor(Math.random()*16);
-        var random5=Math.floor(Math.random()*16);
-        var random6=Math.floor(Math.random()*16);
-        
-        //给body设置颜色
-        document.body.style.backgroundColor="#"+letter[random1]+letter[random2]+letter[random3]+letter[random4]+letter[random5]+letter[random6];
+    const h1 = document.querySelector('h1')
+    h1.innerHTML = h1.textContent.replace(/\S/g, '<span>$&</span>')
 
-        // alert("#"+letter[random1]+letter[random2]+letter[random3]+letter[random4]+letter[random5]+letter[random6]);
-    }
+    let delay = 0
+    document.querySelectorAll('span').forEach((span, index) => {
+        delay += 0.1
+        span.style.setProperty('--delay', `${delay}s`)
+    })
 
-    //页面加载
-    window.onload=function(){
-        // changeBG();
-        //定时执行换色程序
-        setInterval(() => {
-            changeBG()
-        }, 100);
+    // 添加一个动画完成事件
+    h1.addEventListener('animationend', (e) => {
+        if (e.target === document.querySelector('h1 span:last-child')) {
+            // 在最后一个节点完成时
+            h1.classList.add('ended')
+        }
+    })
 
-        // while(true){
-        //     setTimeout(changeBG(),2000);
-        //     break;
-        // }
-
-    }
-
-</script>
-<script type="text/javascript">
-	var hiddenProperty = 'hidden' in document ? 'hidden' :
-		'webkitHidden' in document ? 'webkitHidden' :
-		'mozHidden' in document ? 'mozHidden' :
-		null;
-	var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
-	var onVisibilityChange = function() {
-		if(!document[hiddenProperty]) {
-			document.title = "ˇε ˇ黑凤梨 "
-		} else {
-			document.title = ":-( 不要离开我"
-		}
-	}
-	document.addEventListener(visibilityChangeEvent, onVisibilityChange);
 </script>
